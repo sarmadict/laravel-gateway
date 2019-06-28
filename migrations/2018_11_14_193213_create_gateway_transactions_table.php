@@ -22,13 +22,13 @@ class CreateGatewayTransactionsTable extends Migration
     {
         Schema::create($this->getTable(), function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
-            $table->smallInteger('provider');
+            $table->string('provider');
             $table->decimal('amount', 15, 2);
             $table->string('currency', 3)->nullable();
             $table->string('ref_id', 100)->nullable();
             $table->string('tracking_code', 50)->nullable();
             $table->string('card_number', 50)->nullable();
-            $table->smallInteger('status')->default(Transaction::STATE_INIT);
+            $table->string('status')->default(Transaction::STATE_INIT);
             $table->string('ip', 20)->nullable();
             $table->json('extra')->nullable();
             $table->timestamp('paid_at')->nullable();
